@@ -1,93 +1,152 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-  <meta charset="UTF-8">
-  <title>Misi Berpikir Kritis SD</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      background: #f4f9ff;
-      text-align: center;
-      padding: 20px;
-    }
-    h1 {
-      color: #2c3e50;
-    }
-    .card {
-      background: white;
-      padding: 20px;
-      margin: 20px auto;
-      width: 90%;
-      max-width: 600px;
-      border-radius: 12px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-      font-size: 18px;
-    }
-    button {
-      padding: 12px 18px;
-      margin: 8px;
-      font-size: 16px;
-      border: none;
-      border-radius: 8px;
-      cursor: pointer;
-      background: #4da3ff;
-      color: white;
-    }
-    button:hover {
-      background: #2e86de;
-    }
-  </style>
+<meta charset="UTF-8">
+<title>Misi: Akibatnya Apa Ya?</title>
+
+<style>
+body {
+  margin: 0;
+  font-family: "Comic Sans MS", Arial, sans-serif;
+  overflow-x: hidden;
+  background: #cceeff;
+}
+
+/* GAME AREA */
+#game {
+  display: flex;
+  width: 300vw;
+  height: 100vh;
+  transition: transform 0.8s ease;
+}
+
+/* ZONE */
+.zone {
+  width: 100vw;
+  padding: 40px;
+  box-sizing: border-box;
+  position: relative;
+}
+
+/* CHARACTER */
+.character {
+  font-size: 80px;
+  position: absolute;
+  bottom: 40px;
+  left: 60px;
+}
+
+/* SPEECH BUBBLE */
+.bubble {
+  background: white;
+  padding: 15px 20px;
+  border-radius: 20px;
+  width: 260px;
+  position: absolute;
+  top: 60px;
+  left: 40px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+/* BOX */
+.box {
+  background: white;
+  border-radius: 20px;
+  padding: 25px;
+  max-width: 500px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+}
+
+/* BUTTON */
+button {
+  margin-top: 20px;
+  padding: 12px 24px;
+  font-size: 18px;
+  border: none;
+  border-radius: 20px;
+  background: #ff9900;
+  color: white;
+  cursor: pointer;
+}
+button:hover {
+  background: #ff7700;
+}
+
+/* VIDEO */
+iframe {
+  width: 100%;
+  height: 250px;
+  border-radius: 15px;
+  margin-top: 15px;
+}
+</style>
 </head>
+
 <body>
 
-<h1>🚨 MISI: AKIBATNYA APA YA?</h1>
+<div id="game">
 
-<div class="card" id="content">
-  Klik <b>Mulai Misi</b> untuk memulai 🚀
+  <!-- ZONE 1: START -->
+  <div class="zone" style="background:#a3ddff;">
+    <div class="character">🧒👧</div>
+    <div class="bubble">
+      Halo! Yuk mulai petualangan hari ini!
+    </div>
+
+    <div class="box" style="margin-top:200px;">
+      <h1>MISI: AKIBATNYA APA YA?</h1>
+      <button onclick="nextZone()">▶ MULAI MISI</button>
+    </div>
+  </div>
+
+  <!-- ZONE 2: MULAI MISI -->
+  <div class="zone" style="background:#88ccee;">
+    <div class="character">🧒👧</div>
+
+    <div class="box">
+      <h2>🔍 AMATI!</h2>
+      <p>
+        Perhatikan video atau gambar yang ditampilkan oleh guru.
+        Amati apa saja yang terjadi di lingkungan sekitar.
+      </p>
+
+      <!-- VIDEO OPSIONAL -->
+      <!-- Kalau tidak mau video, hapus iframe ini -->
+      <iframe src="https://www.youtube.com/embed/VIDEO_ID"></iframe>
+
+      <button onclick="nextZone()">LANJUT ➜</button>
+    </div>
+  </div>
+
+  <!-- ZONE 3: TUGAS KELOMPOK -->
+  <div class="zone" style="background:#66bbdd;">
+    <div class="character">🧒👧</div>
+
+    <div class="box">
+      <h2>🤝 TUGAS KELOMPOK</h2>
+      <p>
+        Diskusikan bersama kelompokmu.<br>
+        Setiap anak wajib menuliskan <b>1 dampak banjir</b>
+        beserta <b>alasannya</b>.<br>
+        Jawaban tidak boleh sama.
+      </p>
+
+      <button onclick="alert('Diskusi kelompok dimulai!')">
+        LANJUTKAN PERJALANAN
+      </button>
+    </div>
+  </div>
+
 </div>
 
-<button onclick="step1()">Mulai Misi</button>
-<button onclick="step2()">Tugas Kelompok</button>
-<button onclick="step3()">Kartu Petunjuk</button>
-<button onclick="step4()">Refleksi</button>
-
 <script>
-  function step1() {
-    document.getElementById("content").innerHTML =
-      "🌧️ <b>Kota kita kebanjiran!</b><br><br>" +
-      "Amati video / gambar banjir yang ditampilkan guru.<br>" +
-      "Perhatikan apa saja yang terjadi di lingkungan sekitar.";
-  }
+let position = 0;
 
-  function step2() {
-    document.getElementById("content").innerHTML =
-      "👥 <b>Tugas Kelompok</b><br><br>" +
-      "Diskusikan bersama kelompokmu.<br><br>" +
-      "<b>Setiap anak WAJIB menulis:</b><br>" +
-      "1 dampak banjir + alasannya.<br><br>" +
-      "⚠️ Tidak boleh sama dengan teman!";
-  }
-
-  function step3() {
-    const hints = [
-      "🐾 Coba pikirkan makhluk hidup di sekitar.",
-      "🏥 Coba pikirkan kesehatan manusia.",
-      "🏫 Coba pikirkan kegiatan sekolah.",
-      "🏠 Coba pikirkan kehidupan di rumah.",
-      "🌱 Coba pikirkan lingkungan sekitar."
-    ];
-    const randomHint = hints[Math.floor(Math.random() * hints.length)];
-    document.getElementById("content").innerHTML =
-      "🎴 <b>KARTU PETUNJUK</b><br><br>" + randomHint;
-  }
-
-  function step4() {
-    document.getElementById("content").innerHTML =
-      "🧠 <b>Refleksi</b><br><br>" +
-      "• Dampak mana yang paling membuatmu berpikir?<br>" +
-      "• Apakah ada ide yang baru kamu sadari hari ini?<br>" +
-      "• Mengapa banjir bisa berdampak luas?";
-  }
+function nextZone() {
+  position += 100;
+  document.getElementById("game").style.transform =
+    "translateX(-" + position + "vw)";
+}
 </script>
 
 </body>
