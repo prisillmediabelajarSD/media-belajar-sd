@@ -1,10 +1,94 @@
 <!DOCTYPE html>
-<html>
+<html lang="id">
 <head>
-  <title>Media Belajar SD</title>
+  <meta charset="UTF-8">
+  <title>Misi Berpikir Kritis SD</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f4f9ff;
+      text-align: center;
+      padding: 20px;
+    }
+    h1 {
+      color: #2c3e50;
+    }
+    .card {
+      background: white;
+      padding: 20px;
+      margin: 20px auto;
+      width: 90%;
+      max-width: 600px;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      font-size: 18px;
+    }
+    button {
+      padding: 12px 18px;
+      margin: 8px;
+      font-size: 16px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      background: #4da3ff;
+      color: white;
+    }
+    button:hover {
+      background: #2e86de;
+    }
+  </style>
 </head>
 <body>
-  <h1>Media Belajar Interaktif SD</h1>
-  <p>Guru sebagai operator, siswa belajar bersama.</p>
+
+<h1>🚨 MISI: AKIBATNYA APA YA?</h1>
+
+<div class="card" id="content">
+  Klik <b>Mulai Misi</b> untuk memulai 🚀
+</div>
+
+<button onclick="step1()">Mulai Misi</button>
+<button onclick="step2()">Tugas Kelompok</button>
+<button onclick="step3()">Kartu Petunjuk</button>
+<button onclick="step4()">Refleksi</button>
+
+<script>
+  function step1() {
+    document.getElementById("content").innerHTML =
+      "🌧️ <b>Kota kita kebanjiran!</b><br><br>" +
+      "Amati video / gambar banjir yang ditampilkan guru.<br>" +
+      "Perhatikan apa saja yang terjadi di lingkungan sekitar.";
+  }
+
+  function step2() {
+    document.getElementById("content").innerHTML =
+      "👥 <b>Tugas Kelompok</b><br><br>" +
+      "Diskusikan bersama kelompokmu.<br><br>" +
+      "<b>Setiap anak WAJIB menulis:</b><br>" +
+      "1 dampak banjir + alasannya.<br><br>" +
+      "⚠️ Tidak boleh sama dengan teman!";
+  }
+
+  function step3() {
+    const hints = [
+      "🐾 Coba pikirkan makhluk hidup di sekitar.",
+      "🏥 Coba pikirkan kesehatan manusia.",
+      "🏫 Coba pikirkan kegiatan sekolah.",
+      "🏠 Coba pikirkan kehidupan di rumah.",
+      "🌱 Coba pikirkan lingkungan sekitar."
+    ];
+    const randomHint = hints[Math.floor(Math.random() * hints.length)];
+    document.getElementById("content").innerHTML =
+      "🎴 <b>KARTU PETUNJUK</b><br><br>" + randomHint;
+  }
+
+  function step4() {
+    document.getElementById("content").innerHTML =
+      "🧠 <b>Refleksi</b><br><br>" +
+      "• Dampak mana yang paling membuatmu berpikir?<br>" +
+      "• Apakah ada ide yang baru kamu sadari hari ini?<br>" +
+      "• Mengapa banjir bisa berdampak luas?";
+  }
+</script>
+
 </body>
 </html>
