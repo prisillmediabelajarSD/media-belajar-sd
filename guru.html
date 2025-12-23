@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<title>Mode Guru – Buat Misi</title>
+<style>
+body {
+  font-family: Arial, sans-serif;
+  background: #f2f7ff;
+  margin: 0;
+  padding: 20px;
+}
+.step {
+  display: none;
+  background: white;
+  padding: 25px;
+  border-radius: 15px;
+  max-width: 600px;
+  margin: auto;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+.step.active {
+  display: block;
+}
+button {
+  margin-top: 20px;
+  padding: 12px 24px;
+  font-size: 16px;
+  border: none;
+  border-radius: 20px;
+  background: #4a90e2;
+  color: white;
+  cursor: pointer;
+}
+input, textarea {
+  width: 100%;
+  padding: 10px;
+  margin-top: 10px;
+  border-radius: 10px;
+  border: 1px solid #ccc;
+}
+</style>
+</head>
+
+<body>
+
+<!-- STEP 1 -->
+<div class="step active">
+  <h2>STEP 1 — Info Misi</h2>
+  <input id="judul" placeholder="Judul misi">
+  <textarea id="pembuka" placeholder="Cerita pembuka misi"></textarea>
+  <button onclick="next()">Lanjut</button>
+</div>
+
+<!-- STEP 2 -->
+<div class="step">
+  <h2>STEP 2 — Video (Opsional)</h2>
+  <input id="video" placeholder="Link YouTube (boleh kosong)">
+  <button onclick="next()">Lanjut</button>
+</div>
+
+<!-- STEP 3 -->
+<div class="step">
+  <h2>STEP 3 — Tugas Kelompok</h2>
+  <textarea id="tugas" placeholder="Teks tugas diskusi"></textarea>
+  <button onclick="next()">Lanjut</button>
+</div>
+
+<!-- STEP 4 -->
+<div class="step">
+  <h2>STEP 4 — Kartu Petunjuk</h2>
+  <input id="k1" placeholder="Kartu 1">
+  <input id="k2" placeholder="Kartu 2">
+  <input id="k3" placeholder="Kartu 3">
+  <input id="k4" placeholder="Kartu 4">
+  <input id="k5" placeholder="Kartu 5">
+  <button onclick="next()">Lanjut</button>
+</div>
+
+<!-- STEP 5 -->
+<div class="step">
+  <h2>STEP 5 — Refleksi</h2>
+  <input id="r1" placeholder="Pertanyaan refleksi 1">
+  <input id="r2" placeholder="Pertanyaan refleksi 2">
+  <input id="r3" placeholder="Pertanyaan refleksi 3">
+  <button onclick="finish()">Buat & Bagikan</button>
+</div>
+
+<!-- STEP 6 -->
+<div class="step">
+  <h2>Misi Siap 🎉</h2>
+  <p>Link untuk siswa:</p>
+  <input id="link" readonly>
+</div>
+
+<script>
+let current = 0;
+const steps = document.querySelectorAll(".step");
+
+function next() {
+  steps[current].classList.remove("active");
+  current++;
+  steps[current].classList.add("active");
+}
+
+function finish() {
+  const data = {
+    judul: judul.value,
+    pembuka: pembuka.value,
+    video: video.value,
+    tugas: tugas.value,
+    kartu: [k1.value, k2.value, k3.value, k4.value, k5.value],
+    refleksi: [r1.value, r2.value, r3.value]
+  };
+
+  localStorage.setItem("misiData", JSON.stringify(data));
+  steps[current].classList.remove("active");
+  steps[current + 1].classList.add("active");
+
+  document.getElementById("link").value =
+    location.origin + "/index.html";
+}
+</script>
+
+</body>
+</html>
